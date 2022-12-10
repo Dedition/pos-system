@@ -34,8 +34,27 @@ const Sidebar = ({
 
     return (
         <Box component="nav">
+            [isSideBarOpen && (
+            <Drawer
+                open={isSideBarOpen}
+                onClose={() => setIsSideBarOpen(false)}
+                variant={isNonMobile ? "persistent" : "temporary"}
+                anchor="left"
+                sx={{
+                    width: drawerWidth,
+                    "& .MuiDrawer-paper": {
+                        color: theme.palette.secondary[200],
+                        backgroundColor: theme.palette.background.alt,
+                        boxSizing: "border-box",
+                        borderWidth: isNonMobile ? 0 : "2px",
+                        width: drawerWidth
+                    }
+                }}
+            >
 
-        </Box>
+            </Drawer>
+            )]
+        </Box >
     )
 }
 
