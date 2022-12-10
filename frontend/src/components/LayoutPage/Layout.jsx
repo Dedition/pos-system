@@ -12,19 +12,17 @@ const Layout = () => {
 
     return (
         <Box width="100%" height="100%" display={isNonMobile ? "flex" : "block"}>
-            <Box>
-                <Sidebar
-                    isNonMobile={isNonMobile}
-                    drawerWidth="250px"
-                    isSideBarOpen={isSideBarOpen}
-                    setIsSideBarOpen={setIsSideBarOpen}
-                />
-                <Navbar
-                    isSideBarOpen={isSideBarOpen}
-                    setIsSideBarOpen={setIsSideBarOpen}
-                />
-                <Outlet />
-            </Box>
+            <Sidebar
+                isNonMobile={isNonMobile}
+                drawerWidth="250px"
+                isSideBarOpen={isSideBarOpen}
+                setIsSideBarOpen={setIsSideBarOpen}
+            />
+            <Navbar
+                isSideBarOpen={isSideBarOpen}
+                setIsSideBarOpen={setIsSideBarOpen}
+            />
+            <Outlet />
         </Box>
     )
 }

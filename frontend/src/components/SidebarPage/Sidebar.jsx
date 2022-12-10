@@ -97,7 +97,7 @@ const Sidebar = ({
                 <Drawer
                     open={isSideBarOpen}
                     onClose={() => setIsSideBarOpen(false)}
-                    variant="persistent"
+                    variant={isNonMobile ? "persistent" : "temporary"}
                     anchor="left"
                     sx={{
                         width: drawerWidth,
@@ -115,7 +115,7 @@ const Sidebar = ({
                             <FlexBetween color={theme.palette.secondary.main}>
                                 <Box display="flex" alignItems="center" gap="0.5rem">
                                     <Typography variant="h4" fontWeight="bold">
-                                        ECOMVISION
+                                        POSystem
                                     </Typography>
                                 </Box>
                                 {!isNonMobile && (
