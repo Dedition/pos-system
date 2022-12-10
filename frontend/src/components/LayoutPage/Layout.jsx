@@ -10,6 +10,7 @@ const Layout = () => {
             <Box>
                 <Navbar />
                 <Outlet />
+                <div>Hello World</div>
             </Box>
         </Box>
     )
