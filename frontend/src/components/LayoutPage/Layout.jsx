@@ -4,10 +4,12 @@ import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Navbar from "../NavbarPage/Navbar";
 import Sidebar from "../SidebarPage/Sidebar";
+import { useGetUserQuery } from "state/api";
 
 const Layout = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
     const [isSideBarOpen, setIsSideBarOpen] = useState(true);
+    const userId = useSelector((state) => state.global.userId);
 
 
     return (
