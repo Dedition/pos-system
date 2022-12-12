@@ -43,5 +43,5 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
     .then(() => {
         app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 
-        User.insertMany(dataUser);
+        // User.insertMany(dataUser);
     }).catch((err) => console.log(`${err} Did not connect`));
