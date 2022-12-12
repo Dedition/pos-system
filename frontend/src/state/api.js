@@ -12,6 +12,5 @@ export const api = createApi({
     }),
 });
 
-console.log('api:', api);
 
 export const { useGetUserQuery } = api;
