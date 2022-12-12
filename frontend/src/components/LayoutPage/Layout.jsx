@@ -16,7 +16,7 @@ const Layout = () => {
 
 
     return (
-        <Box width="100%" height="100%" display={isNonMobile ? "flex" : "block"}>
+        <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
             <Sidebar
                 user={data || {}}
                 isNonMobile={isNonMobile}
@@ -24,11 +24,14 @@ const Layout = () => {
                 isSideBarOpen={isSideBarOpen}
                 setIsSideBarOpen={setIsSideBarOpen}
             />
-            <Navbar
-                isSideBarOpen={isSideBarOpen}
-                setIsSideBarOpen={setIsSideBarOpen}
-            />
-            <Outlet />
+            <Box flexGrow={1}>
+                <Navbar
+                    user={data || {}}
+                    isSideBarOpen={isSideBarOpen}
+                    setIsSideBarOpen={setIsSideBarOpen}
+                />
+                <Outlet />
+            </Box>
         </Box>
     )
 }
