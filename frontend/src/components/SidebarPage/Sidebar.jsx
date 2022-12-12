@@ -8,17 +8,19 @@ import {
 import {
     ChevronLeft,
     ChevronRightOutlined,
+    SettingsOutlined,
 } from "@mui/icons-material";
 import { navItems } from "./NavItems";
 
 
 const Sidebar = ({
-    isNonMobile, drawerWidth, isSideBarOpen, setIsSideBarOpen,
+    user, isNonMobile, drawerWidth, isSideBarOpen, setIsSideBarOpen,
 }) => {
     const { pathname } = useLocation();
     const [active, setActive] = useState("");
     const navigate = useNavigate();
     const theme = useTheme();
+    console.log(user);
 
     useEffect(() => { setActive(pathname.split("/")[1]); }, [pathname]);
 
@@ -106,9 +108,30 @@ const Sidebar = ({
                             })}
                         </List>
                     </Box>
-                </Drawer>
+                    <Box position="absolute" bottom="2rem">
+                        <Divider />
+                        <FlexBetween textTransform={"none"} gap="1rem" m="1.5rem 2rem 0 3rem">
+                            <Box component="img" alt={"profile image"} src={profilepic} height="40px" width="40px" borderRadius={"50%"}
+                                sx={{ objectFit: "cover" }}
+                            />
+                            <Box textAlign="left">
+                                <Typography variant="body1" fontWeight="bold" fontSize="0.9rem"
+                                    sx={{ color: theme.palette.secondary[100] }}
+                                >
+                                    {user?.name}
+                                </Typography>
+                                <Typography variant="body1" fontWeight="bold" fontSize="0.8rem"
+                                    sx={{ color: theme.palette.secondary[200] }}
+                                >
+                                    {user?.occupation}
+                                </Typography>
+                            </Box>
+                            <SettingsOutlined sx={{ color: theme.palette.secondary[300], fontSize: "25px" }} />
+                        </FlexBetween>
+                    </Box>
+                </Drawer >
             )}
-        </Box>
+        </Box >
 
     )
 }
