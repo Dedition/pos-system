@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import { Box, FormControl, MenuItem, Box, Select } from '@mui/material';
+import { Box, FormControl, MenuItem, InputLabel, Select } from '@mui/material';
 
 import Header from 'components/HeaderPage/Header';
 import OverviewChart from './OverviewChart';
 
 const Overview = () => {
+  const [view, setView] = useState("units");
+
+
   return (
     <Box m="1.5rem 2.5rem">
       <Header title="Overview" subtitle="Overview of revenue + profit" />
