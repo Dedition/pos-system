@@ -5,6 +5,7 @@ import { useTheme, Box } from '@mui/material'
 
 import Header from 'components/HeaderPage/Header'
 import { useGetTransactionsQuery } from '../../state/api'
+import CustomDataGridToolbar from './CustomDataGridToolbar'
 
 
 const Transactions = () => {
@@ -12,8 +13,9 @@ const Transactions = () => {
 
     const [sort, setSort] = useState({});
     const [page, setPage] = useState(0);
-    const [search, setSearch] = useState('');
     const [pageSize, setPageSize] = useState(20);
+    const [search, setSearch] = useState('');
+    const [searchInput, setSearchInput] = useState('');
 
     const { data, isLoading } = useGetTransactionsQuery({ page, pageSize, sort: JSON.stringify(sort), search });
     console.log("Transactions ~ data", data)
@@ -30,7 +32,6 @@ const Transactions = () => {
         {
             field: 'cost', headerName: 'Cost', flex: 1,
             renderCell: (params) => `$${Number(params.value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-
         },
     ];
 
@@ -79,10 +80,8 @@ const Transactions = () => {
                     onPageChange={(newPage) => setPage(newPage)}
                     onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
                     onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-                // components={{ Toolbar: DataGridCustomToolbar }}
-                // componentsProps={{
-                //     toolbar: { searchInput, setSearchInput, setSearch },
-                // }}
+                    components={{ Toolbar: CustomDataGridToolbar }}
+                    componentsProps={{ toolbar: { searchInput, setSearchInput, setSearch } }}
                 />
             </Box>
         </Box >

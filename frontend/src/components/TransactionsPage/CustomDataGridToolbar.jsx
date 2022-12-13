@@ -3,29 +3,40 @@ import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { GridToolbarDensitySelector, GridToolbarContainer, GridToolbarExport, GridToolbarColumnsButton } from "@mui/x-data-grid";
 import FlexBetween from "components/Styles/FlexBetween";
 
-const CustomDataGridToolbar = () => {
+const CustomDataGridToolbar = ({ setSearch, searchInput, setSearchInput }) => {
     return (
         <GridToolbarContainer>
-            <FlexBetween>
-                <GridToolbarColumnsButton />
-                <GridToolbarDensitySelector />
-                <GridToolbarExport />
+            <FlexBetween width="100%">
+                <FlexBetween>
+                    <GridToolbarColumnsButton />
+                    <GridToolbarDensitySelector />
+                    <GridToolbarExport />
+                </FlexBetween>
                 <TextField
                     label="Search..."
                     sx={{ mb: "0.5rem", width: "15rem" }}
-                    // value={searchInput}
+                    onChange={(e) => { setSearchInput(e.target.value) }}
+                    value={searchInput}
+                    variant="filled"
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            setSearch(searchInput);
+                            setSearchInput('');
+                        }
+                    }}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
                                 <IconButton
-                                    onClick={() => { }}
-                                >
-
+                                    onClick={() => {
+                                        setSearch(searchInput);
+                                        setSearchInput('');
+                                    }}>
+                                    <Search />
                                 </IconButton>
                             </InputAdornment>
                         )
                     }}
-                // onChange={(e) => setSearchInput(e.target.value)}
                 />
             </FlexBetween>
         </GridToolbarContainer>
