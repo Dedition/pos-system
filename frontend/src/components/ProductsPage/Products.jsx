@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Card, CardContent, CardActions, Collapse, Typography, Button, Rating, useTheme, useMediaQuery } from '@material-ui/core';
+import { Box, Card, CardContent, CardActions, Collapse, Typography, Button, Rating, useTheme, useMediaQuery } from '@mui/material';
 
 import { useGetProductsQuery } from 'state/api';
 import Header from 'components/HeaderPage/Header';

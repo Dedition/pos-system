@@ -1,4 +1,4 @@
-import { useTheme, Box, Typography } from '@material-ui/core';
+import { useTheme, Box, Typography } from '@mui/material';
 import { fontWeight } from '@mui/system';
 
 import React from 'react'
