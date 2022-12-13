@@ -40,7 +40,7 @@ const Product = ({
                     sx={{ fontSize: "14" }}
                     color={theme.palette.secondary[100]}
                     gutterBottom>
-                    {category}
+                    {category.toUpperCase()}
                 </Typography>
                 <Typography
                     component={"div"}
