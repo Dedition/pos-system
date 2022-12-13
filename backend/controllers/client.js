@@ -6,8 +6,8 @@ export const getProducts = async (req, res) => {
         const products = await Product.find();
         const productsWithStats = await Promise.all(
             products.map(async (product) => {
-                const productStat = await ProductStat.findOne({ productId: product._id });
-                return { ...product._doc, productStat };
+                const stat = await ProductStat.findOne({ productId: product._id });
+                return { ...product._doc, stat };
             }));
         res.status(200).json(productsWithStats);
     } catch (error) {

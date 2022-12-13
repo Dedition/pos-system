@@ -3,7 +3,7 @@ import { fontWeight } from '@mui/system';
 
 import React from 'react'
 
-const Header = ({ title, subheading }) => {
+const Header = ({ title, subtitle }) => {
     const theme = useTheme();
 
     return (
@@ -20,7 +20,7 @@ const Header = ({ title, subheading }) => {
                 variant="h5"
                 color={theme.palette.secondary[300]}
             >
-                {subheading}
+                {subtitle}
             </Typography>
         </Box >
     )
