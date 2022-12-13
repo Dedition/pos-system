@@ -9,6 +9,7 @@ import Navbar from 'components/NavbarPage/Navbar';
 import Dashboard from 'components/DashboardPage/Dashboard';
 import Layout from 'components/LayoutPage/Layout';
 import Products from 'components/ProductsPage/Products';
+import Customers from 'components/CustomersPage/Customers';
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -24,6 +25,7 @@ function App() {
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/customers" element={<Customers />} />
             </Route>
           </Routes>
         </ThemeProvider>
