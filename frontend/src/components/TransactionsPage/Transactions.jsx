@@ -16,10 +16,11 @@ const Transactions = () => {
     const [pageSize, setPageSize] = useState(20);
 
     const { data, isLoading } = useGetTransactionsQuery({ page, pageSize, sort: JSON.stringify(sort), search });
+    console.log("Transactions ~ data", data)
 
 
     const columns = [
-        { field: 'id', headerName: 'ID', flex: 1 },
+        { field: '_id', headerName: 'ID', flex: 1 },
         { field: 'userId', headerName: 'User ID', flex: 1 },
         { field: 'createdAt', headerName: 'Created At', flex: 1 },
         {
@@ -28,7 +29,8 @@ const Transactions = () => {
         },
         {
             field: 'cost', headerName: 'Cost', flex: 1,
-            renderCell: (params) => `$${Number(params.value).toFixed(2)}`
+            renderCell: (params) => `$${Number(params.value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+
         },
     ];
 

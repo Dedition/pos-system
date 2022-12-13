@@ -59,8 +59,7 @@ export const getTransactions = async (req, res) => {
 
         res.status(200).json({
             transactions,
-            total,
-            transactionsWithUsers,
+            total
         });
     } catch (error) {
         res.status(404).json({ message: error.message });
