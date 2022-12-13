@@ -19,12 +19,27 @@ const Transactions = () => {
 
 
     const columns = [
-
-
+        { field: 'id', headerName: 'ID', flex: 1 },
+        { field: 'userId', headerName: 'User ID', flex: 1 },
+        { field: 'createdAt', headerName: 'Created At', flex: 1 },
+        {
+            field: 'products', headerName: 'Products', flex: 0.5, sortable: false,
+            renderCell: (params) => params.value.length
+        },
+        {
+            field: 'cost', headerName: 'Cost', flex: 1,
+            renderCell: (params) => `$${Number(params.value).toFixed(2)}`
+        },
+    ];
 
 
     return (
-        <div>Transactions</div>
+        <Box m="1.5rem 2.5rem">
+            <Header title="TRANSACTIONS" subtitle="Complete List of Transactions" />
+            <Box height="80vh">
+                <DataGrid />
+            </Box>
+        </Box >
     )
 }
 
