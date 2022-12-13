@@ -15,7 +15,6 @@ const Product = ({
     console.log("stat", stat)
     const [isExpanded, setIsExpanded] = useState(false);
     const theme = useTheme();
-    const isNonMobile = useMediaQuery("(min-width:1000px)");
 
 
     return (
