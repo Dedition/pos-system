@@ -47,7 +47,6 @@ export const getTransactions = async (req, res) => {
             $or: [
                 { cost: { $regex: new RegExp(search, "i") } },
                 { userId: { $regex: new RegExp(search, "i") } },
-                { products: { $regex: new RegExp(search, "i") } },
             ],
         })
             .sort(sortFormatted)
@@ -57,14 +56,6 @@ export const getTransactions = async (req, res) => {
         const total = await Transaction.countDocuments({
             name: { $regex: search, $options: "i" },
         });
-
-        const transactionsWithUsers = await Promise.all(
-            transactions.map(async (transaction) => {
-                const user = await User.findOne({ _id: transaction.userId });
-                return { ...transaction._doc, user };
-            }
-            )
-        );
 
         res.status(200).json({
             transactions,
