@@ -18,7 +18,6 @@ const Transactions = () => {
     const [searchInput, setSearchInput] = useState('');
 
     const { data, isLoading } = useGetTransactionsQuery({ page, pageSize, sort: JSON.stringify(sort), search });
-    console.log("Transactions ~ data", data)
 
 
     const columns = [
