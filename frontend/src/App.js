@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { themeSettings } from 'theme';
 
-import Navbar from 'components/NavbarPage/Navbar';
 import Dashboard from 'components/DashboardPage/Dashboard';
 import Layout from 'components/LayoutPage/Layout';
 import Products from 'components/ProductsPage/Products';
