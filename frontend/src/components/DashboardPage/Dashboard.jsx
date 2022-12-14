@@ -12,31 +12,44 @@ import { useGetDashboardQuery } from "state/api";
 
 const Dashboard = () => {
     const theme = useTheme();
-    const isNonMediumScreens = useMediaQuery(theme.breakpoints.down("md"));
-
+    const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
     const { data, isLoading } = useGetDashboardQuery();
-    console.log("Dashboard ~ data", data)
 
     const columns = [
-        { field: '_id', headerName: 'ID', flex: 1 },
-        { field: 'userId', headerName: 'User ID', flex: 1 },
-        { field: 'createdAt', headerName: 'Created At', flex: 1 },
         {
-            field: 'products', headerName: 'Products', flex: 0.5, sortable: false,
-            renderCell: (params) => params.value.length
+            field: "_id",
+            headerName: "ID",
+            flex: 1,
         },
         {
-            field: 'cost', headerName: 'Cost', flex: 1,
+            field: "userId",
+            headerName: "User ID",
+            flex: 1,
+        },
+        {
+            field: "createdAt",
+            headerName: "CreatedAt",
+            flex: 1,
+        },
+        {
+            field: "products",
+            headerName: "# of Products",
+            flex: 0.5,
+            sortable: false,
+            renderCell: (params) => params.value.length,
+        },
+        {
+            field: "cost",
+            headerName: "Cost",
+            flex: 1,
             renderCell: (params) => `$${Number(params.value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
         },
     ];
 
-
-
     return (
         <Box m="1.5rem 2.5rem">
             <FlexBetween>
-                <Header title="Dashboard" subtitle="An overview of everything you need" />
+                <Header title="Dashboard" subtitle="Aggregated data for your benefit" />
 
                 <Box>
                     <Button
@@ -67,7 +80,7 @@ const Dashboard = () => {
                 {/* ROW 1 */}
                 <StatBox
                     title="Total Customers"
-                    value={data && data.totalCustomers}
+                    value={data && data.totalCustomers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     increase="+14%"
                     description="Since last month"
                     icon={
@@ -78,7 +91,7 @@ const Dashboard = () => {
                 />
                 <StatBox
                     title="Sales Today"
-                    value={data && data.todayStats.totalSales}
+                    value={data && data.todayStats.totalSales.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     increase="+21%"
                     description="Since last month"
                     icon={
@@ -98,7 +111,7 @@ const Dashboard = () => {
                 </Box>
                 <StatBox
                     title="Monthly Sales"
-                    value={data && data.thisMonthStats.totalSales}
+                    value={data && data.thisMonthStats.totalSales.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     increase="+5%"
                     description="Since last month"
                     icon={
@@ -109,7 +122,7 @@ const Dashboard = () => {
                 />
                 <StatBox
                     title="Yearly Sales"
-                    value={data && data.yearlySalesTotal}
+                    value={data && data.yearlySalesTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     increase="+43%"
                     description="Since last month"
                     icon={
@@ -179,6 +192,6 @@ const Dashboard = () => {
             </Box>
         </Box>
     );
-}
+};
 
 export default Dashboard;
