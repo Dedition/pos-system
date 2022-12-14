@@ -9,7 +9,6 @@ import columns from "components/CustomersPage/Columns";
 const Admins = () => {
     const theme = useTheme();
     const { data, isLoading } = useGetAdminsQuery();
-    console.log("Admins ~ data", data)
 
     return (
         <Box Box m="1.5rem 2.5rem" >

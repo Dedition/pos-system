@@ -12,7 +12,6 @@ const Product = ({
     supply,
     stat,
 }) => {
-    console.log("stat", stat)
     const [isExpanded, setIsExpanded] = useState(false);
     const theme = useTheme();
 
