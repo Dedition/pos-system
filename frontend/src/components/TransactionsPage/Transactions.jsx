@@ -37,7 +37,7 @@ const Transactions = () => {
 
     return (
         <Box m="1.5rem 2.5rem">
-            <Header title="TRANSACTIONS" subtitle="Complete List of Transactions" />
+            <Header title="Transactions" subtitle="Complete List of Transactions" />
             <Box height="80vh"
                 sx={{
                     "& .MuiDataGrid-root": {
